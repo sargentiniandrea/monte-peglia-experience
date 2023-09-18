@@ -9,6 +9,7 @@ function SpanCalendario({
   setAttivita,
   giorno,
   classe,
+  isSaved,
 }) {
   const navigate = useNavigate();
   const goToAttivita = (_slug) => {
@@ -32,12 +33,14 @@ function SpanCalendario({
 
   return (
     <div className={`blocco-attivita pointer blocco-att-active ${classe}`}>
-      <span
-        className='remove-attivita'
-        onClick={() => removeItem(titolo, giorno)}
-      >
-        <RiCloseLine />
-      </span>
+      {!isSaved && (
+        <span
+          className='remove-attivita'
+          onClick={() => removeItem(titolo, giorno)}
+        >
+          <RiCloseLine />
+        </span>
+      )}
       <div onClick={() => goToAttivita(slug)}>
         <p>{titolo}</p>
         <hr />

@@ -17,11 +17,15 @@ const ToolScreen = () => {
   } = useToolContext();
 
   useEffect(() => {
-    localStorage.setItem("start", startDate.toString());
+    if (startDate) {
+      localStorage.setItem("start", startDate.toString());
+    }
   }, [startDate]);
 
   useEffect(() => {
-    localStorage.setItem("end", endDate.toString());
+    if (endDate) {
+      localStorage.setItem("end", endDate.toString());
+    }
   }, [endDate]);
 
   useEffect(() => {

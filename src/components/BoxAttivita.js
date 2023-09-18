@@ -64,7 +64,7 @@ function BoxAttivita({ ACF, slug, title, date }) {
   return (
     <div className='box-attivita'>
       <div
-        className='img-attivita'
+        className='img-attivita pointer'
         style={{
           backgroundImage: `url(${ACF.immagine_attivita.sizes.medium_large})`,
         }}
@@ -75,7 +75,7 @@ function BoxAttivita({ ACF, slug, title, date }) {
         </span>
       </div>
       <div className='info-attivita'>
-        <div className='titolo-attivita'>
+        <div className='titolo-attivita pointer'>
           <h3 onClick={() => goToAttivita(slug)}>{title.rendered}</h3>
         </div>
         <div className='date-attivita'>

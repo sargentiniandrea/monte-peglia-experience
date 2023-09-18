@@ -20,7 +20,14 @@ function DatepickerForm() {
     resetAll,
   } = useToolContext();
 
-  let difference = endDate.getTime() - startDate.getTime();
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
+
+  let difference =
+    endDate.length > 0 && startDate.length > 0
+      ? endDate.getTime() - startDate.getTime()
+      : 0;
   let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
 
   return (
@@ -40,6 +47,7 @@ function DatepickerForm() {
               selectsStart
               startDate={startDate}
               endDate={endDate}
+              withPortal
             />
           </div>
 
@@ -51,7 +59,7 @@ function DatepickerForm() {
               dateFormat='dd MMMM yyyy'
               placeholderText='Partenza'
               selected={
-                endDate.getTime() <= startDate.getTime()
+                endDate && startDate && endDate.getTime() <= startDate.getTime()
                   ? startDate
                   : TotalDays > 7
                   ? startDate
@@ -64,13 +72,17 @@ function DatepickerForm() {
               maxDate={
                 startDate ? addDays(startDate, 7) : addDays(new Date(), 7)
               }
+              withPortal
             />
           </div>
         </div>
         <div className='container-date-btns'>
           <button
             className={`reset-tool btn ${isReset ? "" : "open-reset-tool"}`}
-            onClick={resetAll}
+            onClick={() => {
+              resetAll();
+              scrollTop();
+            }}
           >
             Reset
           </button>

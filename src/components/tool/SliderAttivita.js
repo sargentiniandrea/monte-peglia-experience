@@ -40,7 +40,7 @@ function SliderAttivita({ date, giorno, setAttivita, attivita }) {
             </Slider>
           </>
         ) : !isLoading && isError ? (
-          <h5>Errore</h5>
+          <h5 className='message-is-error'>Errore</h5>
         ) : (
           <BoxAttivitaSkeleton />
         )}

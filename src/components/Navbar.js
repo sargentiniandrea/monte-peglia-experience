@@ -14,7 +14,7 @@ const Navbar = () => {
         <header className='nav-header'>
           <Link to='/' className='nav-brand'>
             <h3 className='logo'>
-              <LiaMountainSolid /> Monte Peglia
+              <LiaMountainSolid /> Nome Sito
             </h3>
           </Link>
           <div className='nav-toggler pointer'>

@@ -114,6 +114,10 @@ hr {
   opacity: 0.5;
 }
 
+.btn.btn-danger {
+  background-color: var(--delete-color);
+}
+
 .btn.btn-hero {
   margin-top: 30px
 }
@@ -136,6 +140,15 @@ hr {
 .page-title {
   margin-bottom: 20px;
   font-weight: 600;
+}
+
+.message-is-error {
+  text-decoration: underline;
+  text-decoration-color: var(--delete-color);
+}
+
+.message-is-error.centered {
+  text-align: center;
 }
 
 /* Loading spinner */
@@ -161,6 +174,11 @@ hr {
 }
 
 .loader.isLoaded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader.isError {
   opacity: 0;
   visibility: hidden;
 }
@@ -300,6 +318,18 @@ hr {
   overflow: scroll;
 }
 
+.nav-sidebar .nav-links .nav-link svg {
+  position: absolute;
+  top: 2px;
+  right: -25px;
+}
+
+.nav-sidebar .nav-links .nav-link {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto
+}
+
 .nav-sidebar .nav-links a {
   padding: 12px 0px;
   display: block;
@@ -342,7 +372,7 @@ hr {
   top: 0px;
   right: -100%;
   transition: all 0.3s ease-in-out;
-  z-index: 999;
+  z-index: 999999;
   height: 100%;
 }
 
@@ -365,6 +395,10 @@ footer {
   color: #08330b;
   background-color: white;
   margin-top: auto
+}
+
+footer p {
+  margin: 5px 0px
 }
 
 footer hr {
@@ -413,6 +447,16 @@ footer hr {
   transition: all 0.2s ease-in-out;
   visibility: hidden;
   opacity: 0;
+}
+
+.gotologin-calendario {
+  background-color: white;
+  color: black;
+  text-decoration: underline;
+  padding: 7px;
+  border-radius: 3px;
+  text-align: center;
+  margin: 20px 0px
 }
 
 .btn-modal-calendario.show-btn-modal-calendario {
@@ -672,7 +716,14 @@ footer hr {
 
 .calendario .calendar-title {
   text-align: center;
-  margin-bottom: 20px
+  margin-bottom: 0px
+}
+
+.calendario .btn {
+  display: block;
+  margin: 20px auto;
+  margin-bottom: 20px;
+  padding: 10px 25px
 }
 
 .calendario .nav-toggler {
@@ -987,4 +1038,98 @@ footer hr {
 
 .container-archivio-attivita .box-attivita.box-attivita-skeleton .btns-attivita.btns-attivita-last {
   display: none;
+}
+
+/* Autenticazione */
+
+.section-auth label,
+.section-auth input {
+  display: block;
+}
+
+.section-auth input:not(.btn) {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0px 15px 0px;
+  border: 0px;
+  border-radius: 3px;
+}
+
+.section-auth input[type="submit"] {
+  width: auto;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.container-forgot-password {
+  border-top: 1px solid white;
+  padding-top: 15px
+}
+
+.section-auth .span-error {
+  font-size: 14px;
+}
+
+.section-auth input[type="checkbox"] {
+  display: inline-block;
+  width: auto;
+}
+
+.container-form {
+  padding-bottom: 10px
+}
+
+.section-auth .btn {
+  margin-bottom: 20px;
+}
+
+.section-auth .btn.btn-logout {
+  margin-right: 15px;
+}
+
+.container-btns-auth {
+  display: flex;
+}
+
+.container-btns-auth button {
+  width: 100%;
+  background-color: var(--verde900);
+  border: 1px solid var(--verde900)
+}
+
+.container-btns-auth button.active {
+  background-color: var(--verde500);
+  border-color: white
+}
+
+.container-btns-auth button:first-child {
+  border-radius: 3px 0px 0px 3px;
+}
+
+.container-btns-auth button:last-child {
+  border-radius: 0px 3px 3px 0px;
+}
+
+.header-profilo {
+  margin-bottom: 20px
+}
+
+.section-auth .calendario {
+  position: static;
+  display: block;
+  overflow: visible;
+  height: 100%;
+  background: none;
+  padding: 0px
+}
+
+.section-auth .calendario .container {
+  padding: 0px
+}
+
+.section-auth .calendario .container .calendar-title {
+  margin-bottom: 10px;
+  margin-top: 20px;
+  border-top: 1px solid white;
+  padding-top: 10px
 }

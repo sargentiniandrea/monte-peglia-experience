@@ -1,8 +1,8 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import HeroSection from "../components/HeroSection";
 import { ScrollToTop } from "../utils/helpers";
 
-const HomeScreen = () => {
+const HomeScreen = (isLoading) => {
   return (
     <>
       <ScrollToTop />

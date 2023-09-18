@@ -2,19 +2,28 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context";
 import useFetch from "../useFetch";
+import { FaUserAlt, FaPhoneAlt } from "react-icons/fa";
 
 const links = [
   {
     url: "/organizza-esperienza",
     text: "Organizza la tua esperienza",
+    icon: null,
   },
   {
     url: "/attivita",
     text: "Attività",
+    icon: null,
   },
   {
     url: "/contattaci",
     text: "Contattaci",
+    icon: <FaPhoneAlt />,
+  },
+  {
+    url: "/accedi",
+    text: localStorage.getItem("jwt") ? "Profilo" : "Accedi / Registrati",
+    icon: <FaUserAlt />,
   },
 ];
 
@@ -30,20 +39,18 @@ const LinkComponent = ({ classLink }) => {
       </Link>
       {!isLoading && !isError
         ? data.map((link) => {
-            if (link.slug !== "shortcode") {
-              return (
-                <Link
-                  key={link.id}
-                  to={`/${link.slug}`}
-                  className='nav-item'
-                  onClick={closeSidebar}
-                >
-                  <div className='nav-link'>
-                    <span className='nav-text'>{link.title.rendered}</span>
-                  </div>
-                </Link>
-              );
-            }
+            return (
+              <Link
+                key={link.id}
+                to={`/${link.slug}`}
+                className='nav-item'
+                onClick={closeSidebar}
+              >
+                <div className='nav-link'>
+                  <span className='nav-text'>{link.title.rendered}</span>
+                </div>
+              </Link>
+            );
           })
         : isLoading && localPage
         ? localPage.map((link) => {
@@ -71,6 +78,7 @@ const LinkComponent = ({ classLink }) => {
           >
             <div className='nav-link'>
               <span className='nav-text'>{customLink.text}</span>
+              {customLink.icon}
             </div>
           </Link>
         );

@@ -1,8 +1,6 @@
 import React from "react";
-import useFetch from "../useFetch";
 
-function Loader() {
-  const { isLoading, isError } = useFetch("pages");
+function Loader({ isLoading, isError }) {
   if (isLoading) {
     return (
       <div className='loader isLoading'>
@@ -18,11 +16,7 @@ function Loader() {
     );
   }
   if (isError) {
-    return (
-      <div className='loader isLoading'>
-        <p>Errore</p>
-      </div>
-    );
+    return <div className='loader isError'></div>;
   }
 
   return (

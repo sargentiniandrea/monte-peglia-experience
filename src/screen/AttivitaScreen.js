@@ -53,7 +53,7 @@ const AttivitaScreen = () => {
                 </div>
               </>
             ) : !isLoading && isError ? (
-              <h5>Errore</h5>
+              <p className='message-is-error'>Errore</p>
             ) : (
               <>
                 <div className='lista-categorie lista-cat-skeleton'>

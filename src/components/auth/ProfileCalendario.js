@@ -1,30 +1,28 @@
+import React from "react";
+import { useState } from "react";
 import { useToolContext } from "../../toolContext";
 import { useAuthContext } from "../../authContext";
-import SpanCalendario from "./SpanCalendario";
+import SpanCalendario from "../tool/SpanCalendario";
 import moment from "moment";
 import "moment/locale/it";
 import { RiCloseLine } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
-import SaveCalendario from "./SaveCalendario";
+import RemoveCalendario from "../tool/RemoveCalendario";
 
-function Calendario() {
-  const navigate = useNavigate();
-  const goToAuth = () => {
-    navigate("/accedi");
-  };
+function ProfileCalendario({ dataCalendario, inizio, fine }) {
+  const [emptyCalendario, setEmptyCalendario] = useState(false);
+  const calendario = JSON.parse(dataCalendario);
   const {
     startDateSearch,
     endDateSearch,
     attivita,
     setAttivita,
     isCalendarOpen,
-    closeCalendar,
   } = useToolContext();
   const { isUserLogged } = useAuthContext();
-  if (startDateSearch && endDateSearch) {
-    const sortedArray = attivita.slice().sort((a, b) => a.ordine - b.ordine);
 
-    let difference = endDateSearch.getTime() - startDateSearch.getTime();
+  if (startDateSearch && endDateSearch && !emptyCalendario) {
+    const sortedArray = calendario.slice().sort((a, b) => a.ordine - b.ordine);
+    let difference = Number(fine) - Number(inizio);
     let TotalDays = Math.ceil(difference / (1000 * 3600 * 24)) + 1;
     let startTime = startDateSearch.getTime() - 86400000;
 
@@ -45,21 +43,6 @@ function Calendario() {
       >
         <div className='container'>
           <h2 className='calendar-title'>Calendario</h2>
-          {isUserLogged ? (
-            <SaveCalendario data={sortedArray} />
-          ) : (
-            <p className='gotologin-calendario' onClick={goToAuth}>
-              Accedi o Registrati per salvare il calendario
-            </p>
-          )}
-          <div className='nav-toggler'>
-            <button
-              className='nav-icon-btn nav-toggler pointer'
-              onClick={closeCalendar}
-            >
-              <RiCloseLine className='nav-icon' />
-            </button>
-          </div>
           <div className={`container-punti-giorni ${classe}`}>
             {TotalDays > 0 && TotalDays < 9
               ? Array.from(Array(TotalDays), (e, i) => {
@@ -106,6 +89,7 @@ function Calendario() {
                               setAttivita={setAttivita}
                               giorno={stringaFormatDate}
                               classe={""}
+                              isSaved={true}
                             />
                           );
                         } else if (isInteraGiornata && skeleton === "Mattina") {
@@ -119,6 +103,7 @@ function Calendario() {
                               setAttivita={setAttivita}
                               giorno={stringaFormatDate}
                               classe={"blocco-attivita-intera-giornata"}
+                              isSaved={true}
                             />
                           );
                         } else if (
@@ -142,17 +127,7 @@ function Calendario() {
                 })
               : null}
           </div>
-          {isUserLogged ? (
-            <SaveCalendario
-              data={sortedArray}
-              inizio={startDateSearch.getTime()}
-              fine={endDateSearch.getTime()}
-            />
-          ) : (
-            <p className='gotologin-calendario' onClick={goToAuth}>
-              Accedi o Registrati per salvare il calendario
-            </p>
-          )}
+          <RemoveCalendario setEmptyCalendario={setEmptyCalendario} />
         </div>
       </div>
     );
@@ -161,4 +136,4 @@ function Calendario() {
   }
 }
 
-export default Calendario;
+export default ProfileCalendario;
