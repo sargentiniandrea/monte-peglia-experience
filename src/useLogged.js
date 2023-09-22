@@ -7,24 +7,21 @@ const useLogged = () => {
     setIsTokenPresent,
     isTokenPresent,
     setIsUserLoading,
-    isUserLoading,
     setIsUserError,
     isUserLogged,
     setIsUserLogged,
     setUserData,
-    userId,
   } = useAuthContext();
   const [userResponse, setUserResponse] = useState([]);
+  const [isExpired, setIsExpired] = useState(false);
 
   useEffect(() => {
     if (isTokenPresent) {
-      setIsUserError(false);
       setUserData([]);
       let userJWT = localStorage.getItem("jwt") || "";
       if (userJWT.length > 0) {
         let url = `https://backend.andreasargentini.com/?rest_route=/simple-jwt-login/v1/auth/validate&JWT=${userJWT}`;
         (async () => {
-          setIsUserError(false);
           try {
             let response = await axios.get(`${url}`);
             setUserResponse(response.data.data.user);
@@ -32,8 +29,16 @@ const useLogged = () => {
             localStorage.setItem("isLogged", true);
             setIsUserLogged(true);
           } catch (error) {
-            setIsUserError(true);
-            setIsUserLogged(false);
+            console.log(error);
+            if (error.response.data.data.errorCode === 14) {
+              setIsExpired(true);
+            } else {
+              setIsUserError(true);
+              setIsUserLogged(false);
+              localStorage.removeItem("jwt");
+              localStorage.removeItem("userId");
+              localStorage.removeItem("isLogged");
+            }
           }
         })();
       }
@@ -64,6 +69,28 @@ const useLogged = () => {
       })();
     }
   }, [isUserLogged]);
+
+  useEffect(() => {
+    if (isExpired) {
+      setIsUserLoading(true);
+      const userJWT = localStorage.getItem("jwt");
+      let urlRefresh = `https://backend.andreasargentini.com/?rest_route=/simple-jwt-login/v1/auth/refresh&JWT=${userJWT}`;
+      (async () => {
+        try {
+          const response = await axios.get(urlRefresh);
+          setIsUserLoading(false);
+          console.log(response);
+        } catch (error) {
+          setIsUserLoading(false);
+          setIsUserError(true);
+          setIsUserLogged(false);
+          localStorage.removeItem("jwt");
+          localStorage.removeItem("userId");
+          localStorage.removeItem("isLogged");
+        }
+      })();
+    }
+  }, [isExpired]);
 
   return <></>;
 };

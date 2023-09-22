@@ -1,8 +1,7 @@
 import { React } from "react";
-import backImage from "../assets/img/peglia.webp";
+import backImage from "../assets/img/riserva.jpg";
 import { BsArrowUpRight } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../context";
 
 function HeroSection() {
   const navigate = useNavigate();

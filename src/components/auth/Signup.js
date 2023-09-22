@@ -44,6 +44,11 @@ function Signup() {
           onChange={handleChange}
         />
         <input
+          disabled={
+            signupDetails.email.length < 1 || signupDetails.pass.length < 3
+              ? true
+              : false
+          }
           className='btn'
           type='submit'
           value='Registrati'

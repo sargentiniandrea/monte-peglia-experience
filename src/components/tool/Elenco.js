@@ -29,6 +29,7 @@ function Elenco() {
           return (
             <SliderAttivita
               key={i + 1}
+              indice={i + 1}
               date={stringaFormatDate}
               giorno={stringaFormatDayCap}
               setAttivita={setAttivita}

@@ -1,5 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { ScrollToTop } from "../utils/helpers";
 import useFetch from "../useFetch";
 import BoxAttivitaArchivio from "../components/BoxAttivitaArchivio";
 import { useGlobalContext } from "../context";
@@ -25,6 +26,7 @@ const AttivitaScreen = () => {
 
   return (
     <>
+      <ScrollToTop />
       <section className='page-section'>
         <div className='container'>
           <h1 className='page-title'>Attività</h1>
@@ -63,7 +65,7 @@ const AttivitaScreen = () => {
                   <button className='btn btn-filtri'></button>
                   <button className='btn btn-filtri'></button>
                 </div>
-                <BoxAttivitaSkeleton n={2} />
+                <BoxAttivitaSkeleton n={8} />
               </>
             )}
           </div>

@@ -51,6 +51,11 @@ function Login() {
           onChange={handleChange}
         />
         <input
+          disabled={
+            loginDetails.email.length < 1 || loginDetails.pass.length < 3
+              ? true
+              : false
+          }
           className='btn'
           type='submit'
           value='Login'
@@ -58,7 +63,7 @@ function Login() {
         />
         <span className='span-error message-is-error'>{loginMessage}</span>
         <div
-          className='cursor container-forgot-password'
+          className='cursor container-forgot-password pointer'
           onClick={goToResetScreen}
         >
           Hai dimenticato la tua password?

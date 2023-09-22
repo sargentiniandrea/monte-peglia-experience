@@ -32,7 +32,7 @@ function SaveCalendario({ data }) {
     };
     if (jwt) {
       setIsSaving(true);
-      setSaveButtonText("caricamento..");
+      setSaveButtonText("Caricamento..");
       try {
         await axios.post(
           `https://backend.andreasargentini.com/wp-json/wp/v2/users/${id}`,
@@ -40,10 +40,8 @@ function SaveCalendario({ data }) {
           { headers: headers }
         );
         setIsSaving(false);
-        setSaveButtonText("Salvato");
-        console.log("successo");
+        setSaveButtonText("Salvato ✓");
       } catch (error) {
-        console.log(error);
         setIsSaving(false);
         setIsSavingError(true);
         setSaveButtonText("Errore");

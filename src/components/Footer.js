@@ -6,7 +6,7 @@ const Footer = () => {
       <div className='container'>
         <p>Tutti i diritti riservati</p>
         <hr />
-        <p>Riserva Melonta</p>
+        <p>Riserva Monte Peglia</p>
       </div>
     </footer>
   );

@@ -1,18 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useGlobalContext } from "../context";
 import useFetch from "../useFetch";
 import { FaUserAlt, FaPhoneAlt } from "react-icons/fa";
 
 const links = [
   {
-    url: "/organizza-esperienza",
-    text: "Organizza la tua esperienza",
+    url: "/attivita",
+    text: "Attività",
     icon: null,
   },
   {
-    url: "/attivita",
-    text: "Attività",
+    url: "/organizza-esperienza",
+    text: "Organizza la tua esperienza",
     icon: null,
   },
   {
@@ -22,7 +22,7 @@ const links = [
   },
   {
     url: "/accedi",
-    text: localStorage.getItem("jwt") ? "Profilo" : "Accedi / Registrati",
+    text: localStorage.getItem("jwt") ? "Profilo" : "Accedi",
     icon: <FaUserAlt />,
   },
 ];
@@ -32,15 +32,15 @@ const LinkComponent = ({ classLink }) => {
   const { closeSidebar, localPage } = useGlobalContext();
   return (
     <ul className={classLink}>
-      <Link key={"home"} to='/' className='nav-item' onClick={closeSidebar}>
+      <NavLink key={"home"} to='/' className='nav-item' onClick={closeSidebar}>
         <div className='nav-link'>
           <span className='nav-text'>Home</span>
         </div>
-      </Link>
+      </NavLink>
       {!isLoading && !isError
         ? data.map((link) => {
             return (
-              <Link
+              <NavLink
                 key={link.id}
                 to={`/${link.slug}`}
                 className='nav-item'
@@ -49,13 +49,13 @@ const LinkComponent = ({ classLink }) => {
                 <div className='nav-link'>
                   <span className='nav-text'>{link.title.rendered}</span>
                 </div>
-              </Link>
+              </NavLink>
             );
           })
         : isLoading && localPage
         ? localPage.map((link) => {
             return (
-              <Link
+              <NavLink
                 key={link.id}
                 to={`/${link.slug}`}
                 className='nav-item'
@@ -64,13 +64,13 @@ const LinkComponent = ({ classLink }) => {
                 <div className='nav-link'>
                   <span className='nav-text'>{link.title.rendered}</span>
                 </div>
-              </Link>
+              </NavLink>
             );
           })
         : null}
       {links.map((customLink) => {
         return (
-          <Link
+          <NavLink
             key={customLink.text}
             to={customLink.url}
             className='nav-item'
@@ -80,7 +80,7 @@ const LinkComponent = ({ classLink }) => {
               <span className='nav-text'>{customLink.text}</span>
               {customLink.icon}
             </div>
-          </Link>
+          </NavLink>
         );
       })}
     </ul>

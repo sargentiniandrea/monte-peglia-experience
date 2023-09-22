@@ -36,7 +36,7 @@ function DatepickerForm() {
       <div className='container-search-eventi-form'>
         <div className='containerDatepicker'>
           <div className='cont-checkin-input'>
-            <span>Check-In</span>
+            <span>Arrivo</span>
             <DatePicker
               minDate={new Date()}
               locale='it'
@@ -48,11 +48,12 @@ function DatepickerForm() {
               startDate={startDate}
               endDate={endDate}
               withPortal
+              onFocus={(e) => (e.target.readOnly = true)}
             />
           </div>
 
           <div className='cont-checkout-input'>
-            <span>Check-Out</span>
+            <span>Partenza</span>
             <DatePicker
               minDate={startDate ? startDate : new Date()}
               locale='it'
@@ -73,12 +74,15 @@ function DatepickerForm() {
                 startDate ? addDays(startDate, 7) : addDays(new Date(), 7)
               }
               withPortal
+              onFocus={(e) => (e.target.readOnly = true)}
             />
           </div>
         </div>
         <div className='container-date-btns'>
           <button
-            className={`reset-tool btn ${isReset ? "" : "open-reset-tool"}`}
+            className={`reset-tool shadow btn ${
+              isReset ? "" : "open-reset-tool"
+            }`}
             onClick={() => {
               resetAll();
               scrollTop();
@@ -87,7 +91,7 @@ function DatepickerForm() {
             Reset
           </button>
           <button
-            className='search-eventi btn'
+            className='search-eventi shadow btn'
             onClick={() => {
               setStartDateSearch(startDate);
               setEndDateSearch(endDate);

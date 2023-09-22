@@ -25,8 +25,10 @@ const Navbar = () => {
               <RiMenu3Line className='nav-icon' />
             </button>
           </div>
+          <div className='container-nav-link-desktop'>
+            <LinkComponent classLink='nav-links' />
+          </div>
         </header>
-        <LinkComponent classLink='nav-links' />
       </div>
     </nav>
   );

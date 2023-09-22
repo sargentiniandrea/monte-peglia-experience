@@ -6,7 +6,7 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import { FaHourglassHalf } from "react-icons/fa";
 
 function BoxAttivita({ ACF, slug, title, date }) {
-  const { attivita, setAttivita } = useToolContext();
+  const { attivita, setAttivita, setCalendarAnimation } = useToolContext();
 
   const navigate = useNavigate();
   const goToAttivita = (_slug) => {
@@ -174,6 +174,7 @@ function BoxAttivita({ ACF, slug, title, date }) {
                     onClick={(e) => {
                       handleSetAttivita(e);
                       setShowModal(false);
+                      setCalendarAnimation(1);
                     }}
                   >
                     {periodoSearch}

@@ -14,6 +14,8 @@ const ToolScreen = () => {
     attivita,
     openCalendar,
     isReset,
+    calendarAnimation,
+    setCalendarAnimation,
   } = useToolContext();
 
   useEffect(() => {
@@ -61,7 +63,10 @@ const ToolScreen = () => {
               isReset ? "" : "show-btn-modal-calendario"
             }`}
             onClick={openCalendar}
+            calendaranimation={calendarAnimation}
+            onAnimationEnd={() => setCalendarAnimation(0)}
           >
+            <span>Calendario</span>
             <BsFillCalendarCheckFill />
           </div>
         </div>

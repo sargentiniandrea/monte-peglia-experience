@@ -13,6 +13,7 @@ function SpanCalendario({
 }) {
   const navigate = useNavigate();
   const goToAttivita = (_slug) => {
+    document.body.classList.remove("no-scroll");
     navigate(`/attivita/${_slug}`);
   };
 
@@ -41,10 +42,13 @@ function SpanCalendario({
           <RiCloseLine />
         </span>
       )}
-      <div onClick={() => goToAttivita(slug)}>
+      <div
+        className='content-blocco-attivita'
+        onClick={() => goToAttivita(slug)}
+      >
         <p>{titolo}</p>
         <hr />
-        {periodo}
+        <small>{periodo}</small>
       </div>
     </div>
   );

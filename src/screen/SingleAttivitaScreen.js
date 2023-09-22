@@ -55,7 +55,7 @@ const SingleAttivitaScreen = () => {
     title: { rendered: titolo },
     ACF: {
       immagine_attivita: {
-        sizes: { large: url_immagine },
+        sizes: { "1536x1536": url_immagine },
       },
       tipologia_attivita,
       data_ricorrente,

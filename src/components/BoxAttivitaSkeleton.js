@@ -1,4 +1,4 @@
-function BoxAttivitaSkeleton({ n = 2 }) {
+function BoxAttivitaSkeleton({ n = 4 }) {
   return (
     <div className='container-skeleton'>
       {[...Array(n)].map((box, i) => {

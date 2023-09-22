@@ -39,6 +39,8 @@ const ToolProvider = ({ children }) => {
 
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
+  const [calendarAnimation, setCalendarAnimation] = useState(0);
+
   const resetAll = () => {
     setStartDate(new Date());
     setEndDate(new Date());
@@ -50,10 +52,12 @@ const ToolProvider = ({ children }) => {
 
   const openCalendar = () => {
     setIsCalendarOpen(true);
+    document.body.classList.add("no-scroll");
   };
 
   const closeCalendar = () => {
     setIsCalendarOpen(false);
+    document.body.classList.remove("no-scroll");
   };
 
   return (
@@ -73,8 +77,11 @@ const ToolProvider = ({ children }) => {
         setIsResect,
         resetAll,
         isCalendarOpen,
+        setIsCalendarOpen,
         openCalendar,
         closeCalendar,
+        calendarAnimation,
+        setCalendarAnimation,
       }}
     >
       {children}

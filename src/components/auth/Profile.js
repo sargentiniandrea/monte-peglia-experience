@@ -9,7 +9,11 @@ function Profile({ data, isUserLogged, isUserLoading, isUserError }) {
       <Loader isLoading={isUserLoading} isError={isUserError} />
       {!isUserLoading && isUserLogged ? (
         <>
-          <h1 className='header-profilo'>Ciao {data.name}</h1>
+          <p className='header-profilo'>
+            Ciao,
+            <br />
+            {data.name}
+          </p>
           <Logout />
           {data.meta.calendario ? (
             <ProfileCalendario

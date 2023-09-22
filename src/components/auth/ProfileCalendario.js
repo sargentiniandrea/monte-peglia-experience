@@ -57,13 +57,12 @@ function ProfileCalendario({ dataCalendario, inizio, fine }) {
                   let stringaFormat = moment(stringa).format("dddd");
                   return (
                     <span key={i}>
-                      <p className='header-span-calendario'>
-                        Giorno {i + 1}
-                        <br />
+                      <div className='header-span-calendario'>
+                        <p>Giorno {i + 1}</p>
                         <small>
                           {stringaFormat} - {stringaFormatDate}
                         </small>
-                      </p>
+                      </div>
 
                       {arraySkeleton.map((skeleton, index) => {
                         const specificObject = sortedArray.find(

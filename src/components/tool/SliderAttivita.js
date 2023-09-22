@@ -5,21 +5,38 @@ import useFetch from "../../useFetch";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function SliderAttivita({ date, giorno, setAttivita, attivita }) {
+function SliderAttivita({ indice, date, giorno, setAttivita, attivita }) {
   var settings = {
     dots: false,
     arrows: true,
     infinite: false,
-    slidesToShow: 2,
+    slidesToShow: 4,
     className: "container-box-attivita",
+    responsive: [
+      {
+        breakpoint: 650,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 940,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
   };
   const { isLoading, isError, data } = useFetch();
 
   return (
     <div className='row-elenco-attivita'>
-      <p className='header-slider-attivita'>
-        {date} | {giorno}
-      </p>
+      <div className='header-slider-attivita'>
+        <p>Giorno {indice}</p>
+        <small>
+          {giorno} - {date}
+        </small>
+      </div>
       <div className='container-slider'>
         {!isLoading && !isError ? (
           <>
@@ -42,7 +59,7 @@ function SliderAttivita({ date, giorno, setAttivita, attivita }) {
         ) : !isLoading && isError ? (
           <h5 className='message-is-error'>Errore</h5>
         ) : (
-          <BoxAttivitaSkeleton />
+          <BoxAttivitaSkeleton n={8} />
         )}
       </div>
     </div>
