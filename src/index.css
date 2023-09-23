@@ -1657,9 +1657,9 @@ footer hr {
   }
 
   .container-img-singolo-loading {
+    height: 350px;
     max-width: 1150px;
     margin: 0 1.5rem;
-    height: 350px;
     width: auto;
     border-radius: 10px;
   }
@@ -1690,7 +1690,9 @@ footer hr {
 }
 
 @media(min-width: 1200px) {
-  .container-img-singolo {
+
+  .container-img-singolo,
+  .container-img-singolo-loading {
     margin: 0 auto;
   }
 }
