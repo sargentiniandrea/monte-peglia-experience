@@ -9,7 +9,7 @@ const PageScreen = ({ title, content }) => {
     <>
       <ScrollToTop />
       <section className='page-section'>
-        <div className='container'>
+        <div className='container-page'>
           <h1 className='page-title'>{title.rendered}</h1>
           <div
             className='page-content'

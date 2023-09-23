@@ -95,6 +95,13 @@ img {
   margin: 0 auto
 }
 
+.container-page {
+  width: 100%;
+  padding: 0 1rem;
+  max-width: 900px;
+  margin: 0 auto
+}
+
 .section-auth .container {
   max-width: 700px;
 }
@@ -179,6 +186,51 @@ img {
   margin-right: 10px;
   font-size: 20px;
   top: 3px
+}
+
+.tool-page .react-datepicker {
+  font-size: 1rem;
+}
+
+.tool-page .react-datepicker__navigation {
+  top: 10px
+}
+
+.tool-page .react-datepicker__portal .react-datepicker__day-name,
+.tool-page .react-datepicker__portal .react-datepicker__day,
+.tool-page .react-datepicker__portal .react-datepicker__time-name {
+  width: 2.2rem;
+  line-height: 2.2rem;
+}
+
+.tool-page .react-datepicker__navigation {
+  border-radius: 3px;
+  border: 1px solid gray;
+  background-color: white;
+}
+
+.tool-page .react-datepicker__navigation-icon {
+  margin: 0px
+}
+
+.tool-page .react-datepicker__navigation-icon--next::before {
+  left: -4px
+}
+
+.tool-page .react-datepicker__navigation-icon--previous::before {
+  right: -4px;
+}
+
+.tool-page .react-datepicker__navigation--previous {
+  left: 10px
+}
+
+.tool-page .react-datepicker__navigation--next {
+  right: 10px;
+}
+
+.tool-page .react-datepicker__header {
+  padding: 11px 0px 0px 0px
 }
 
 /* Home */
@@ -1307,7 +1359,15 @@ footer hr {
   .btn .btn-icon {
     top: 14px
   }
+
+  .tool-page .react-datepicker__portal .react-datepicker__day-name,
+  .tool-page .react-datepicker__portal .react-datepicker__day,
+  .tool-page .react-datepicker__portal .react-datepicker__time-name {
+    width: 2.7rem;
+    line-height: 2.7rem;
+  }
 }
+
 
 @media(min-width: 425px) {
   .btn.btn-hero {
@@ -1321,6 +1381,13 @@ footer hr {
 
   .container-img-singolo {
     height: 220px;
+  }
+
+  .tool-page .react-datepicker__portal .react-datepicker__day-name,
+  .tool-page .react-datepicker__portal .react-datepicker__day,
+  .tool-page .react-datepicker__portal .react-datepicker__time-name {
+    width: 3rem;
+    line-height: 3rem;
   }
 }
 
@@ -1352,7 +1419,8 @@ footer hr {
     line-height: 37px;
   }
 
-  .container {
+  .container,
+  .container-page {
     padding: 0 1.5rem
   }
 

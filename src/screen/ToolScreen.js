@@ -48,7 +48,7 @@ const ToolScreen = () => {
 
   return (
     <>
-      <section className='page-section'>
+      <section className='page-section tool-page'>
         <div className='container'>
           <h1 className='page-title'>Costruisci la tua esperienza</h1>
           <div className='header-form'>

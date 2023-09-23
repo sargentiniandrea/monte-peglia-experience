@@ -7,7 +7,7 @@ const ContactScreen = () => {
     <>
       <ScrollToTop />
       <section className='page-section'>
-        <div className='container'>
+        <div className='container-page'>
           <h1 className='page-title'>Contatti</h1>
           <p className='contact'>
             <FaPhoneAlt />
