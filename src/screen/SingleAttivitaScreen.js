@@ -9,7 +9,7 @@ const SingleAttivitaScreen = () => {
   const { deleteScrollPosition } = useGlobalContext();
   const navigate = useNavigate();
   const { slug } = useParams();
-  const { isLoading, isError, data } = useFetch("attivita", slug);
+  const { isLoading, isError, data: Data } = useFetch("attivita", slug);
 
   useEffect(() => {
     deleteScrollPosition();
@@ -19,7 +19,7 @@ const SingleAttivitaScreen = () => {
     return (
       <>
         <ScrollToTop />
-        <section className='page-section'>
+        <section className='page-section single-attivita'>
           <div className='container'>
             <div className='return-arrow pointer' onClick={() => navigate(-1)}>
               <RxArrowLeft /> Torna indietro
@@ -57,34 +57,62 @@ const SingleAttivitaScreen = () => {
       immagine_attivita: {
         sizes: { "1536x1536": url_immagine },
       },
-      tipologia_attivita,
-      data_ricorrente,
-      durata,
-      descrizione_attivita: descrizione,
-      orario_specifico,
+      categorie_attivita,
+      descrizione_attivita,
+      scheda_tecnica,
+      generali: { data, prenotazione, sport, tipologia },
+      dettagli: {
+        data_ricorrente,
+        durata,
+        durata_specifica,
+        email_organizzatore,
+        orario_fine,
+        orario_inizio,
+        orario_specifico,
+        singola_data,
+      },
     },
-  } = data[0];
+  } = Data[0];
+
+  console.log(Data);
+
+  let classTipologia = tipologia ? tipologia : "";
+  let classSport = tipologia === "sportiva" && sport ? sport : "";
+  let classPrenotazione = prenotazione ? prenotazione : "";
+  let classData = data ? data : "";
 
   return (
     <>
       <ScrollToTop />
-      <section className='page-section'>
+      <section
+        className={`page-section single-attivita ${classTipologia} ${classSport} ${classPrenotazione} ${classData}`}
+      >
         <div className='container'>
           <div className='return-arrow pointer' onClick={() => navigate(-1)}>
             <RxArrowLeft /> Torna indietro
           </div>
-          <h1 className='page-title'>{titolo}</h1>
+          <h1
+            className='page-title'
+            dangerouslySetInnerHTML={{ __html: titolo }}
+          ></h1>
         </div>
-        <div
-          className='container-img-singolo'
-          style={{
-            backgroundImage: `url(${url_immagine})`,
-          }}
-        ></div>
+        <div className='container-img-singolo-ext'>
+          <div
+            className='container-img-singolo'
+            style={{
+              backgroundImage: `url(${url_immagine})`,
+            }}
+          ></div>
+          <div
+            className='container-scheda-tecnica'
+            dangerouslySetInnerHTML={{ __html: scheda_tecnica }}
+          ></div>
+        </div>
+
         <div className='container'>
           <div
             className='container-descr-attivita'
-            dangerouslySetInnerHTML={{ __html: descrizione }}
+            dangerouslySetInnerHTML={{ __html: descrizione_attivita }}
           ></div>
         </div>
       </section>

@@ -8,7 +8,7 @@ export const formatArray = (arr, type = "estesa") => {
     } else if (arr.length === 2) {
       outStr = arr.join(" e ");
     } else if (arr.length > 2) {
-      outStr = arr.slice(0, -1).join(", ") + ", e " + arr.slice(-1);
+      outStr = arr.slice(0, -1).join(", ") + " e " + arr.slice(-1);
     }
   } else if (type === "compatta") {
     if (arr.length === 1) {

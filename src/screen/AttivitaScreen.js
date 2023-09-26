@@ -18,7 +18,10 @@ const AttivitaScreen = () => {
     } else {
       setFilterProducts(
         data.filter((el) =>
-          el.ACF.categoria_attivita.includes(categoria) ? el : ""
+          el.ACF.categorie_attivita &&
+          el.ACF.categorie_attivita.includes(categoria)
+            ? el
+            : ""
         )
       );
     }
@@ -59,6 +62,8 @@ const AttivitaScreen = () => {
             ) : (
               <>
                 <div className='lista-categorie lista-cat-skeleton'>
+                  <button className='btn btn-filtri'></button>
+                  <button className='btn btn-filtri'></button>
                   <button className='btn btn-filtri'></button>
                   <button className='btn btn-filtri'></button>
                   <button className='btn btn-filtri'></button>

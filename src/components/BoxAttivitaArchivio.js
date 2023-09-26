@@ -9,8 +9,21 @@ function BoxAttivitaArchivio({ ACF, slug, title }) {
   const goToAttivita = (_slug) => {
     navigate(`/attivita/${_slug}`);
   };
+
+  let classTipologia = ACF.generali.tipologia ? ACF.generali.tipologia : "";
+  let classSport =
+    ACF.generali.tipologia === "sportiva" && ACF.generali.sport
+      ? ACF.generali.sport
+      : "";
+  let classPrenotazione = ACF.generali.prenotazione
+    ? ACF.generali.prenotazione
+    : "";
+  let classData = ACF.generali.data ? ACF.generali.data : "";
+
   return (
-    <div className='box-attivita'>
+    <div
+      className={`box-attivita ${classTipologia} ${classSport} ${classPrenotazione} ${classData}`}
+    >
       <div
         className='img-attivita pointer'
         style={{
@@ -18,24 +31,29 @@ function BoxAttivitaArchivio({ ACF, slug, title }) {
         }}
         onClick={() => goToAttivita(slug)}
       >
-        <span className='category-attivita'>
-          {formatArray(ACF.categoria_attivita, "compatta")}
-        </span>
+        {ACF.categorie_attivita ? (
+          <span className='category-attivita'>
+            {formatArray(ACF.categorie_attivita, "compatta")}
+          </span>
+        ) : null}
       </div>
       <div className='info-attivita'>
         <div className='titolo-attivita pointer'>
-          <h3 onClick={() => goToAttivita(slug)}>{title.rendered}</h3>
+          <h3
+            onClick={() => goToAttivita(slug)}
+            dangerouslySetInnerHTML={{ __html: title.rendered }}
+          ></h3>
         </div>
         <div className='date-attivita'>
-          {ACF.tipologia_attivita === "singola_data" ? (
+          {ACF.generali.data === "singola_data" ? (
             <p>
               <FaRegCalendarAlt className='icon-calendario' />{" "}
-              {ACF.singola_data}
+              {ACF.dettagli.singola_data}
             </p>
-          ) : ACF.tipologia_attivita === "ricorrente" ? (
+          ) : ACF.generali.data === "ricorrente" ? (
             <p>
               <FaRegCalendarAlt className='icon-calendario' /> Ogni{" "}
-              {formatArray(ACF.data_ricorrente)}
+              {formatArray(ACF.dettagli.data_ricorrente)}
             </p>
           ) : (
             <p>
@@ -43,12 +61,14 @@ function BoxAttivitaArchivio({ ACF, slug, title }) {
             </p>
           )}
         </div>
-        <div className='durata-attivita'>
-          <p>
-            <FaHourglassHalf className='icon-durata' /> Durata: {ACF.durata} ore
-            ca.
-          </p>
-        </div>
+        {ACF.dettagli.durata_specifica && ACF.dettagli.durata ? (
+          <div className='durata-attivita'>
+            <p>
+              <FaHourglassHalf className='icon-durata' /> Durata:{" "}
+              {ACF.dettagli.durata} ore ca.
+            </p>
+          </div>
+        ) : null}
 
         <div className='btns-attivita'>
           <button className='btn' onClick={() => goToAttivita(slug)}>

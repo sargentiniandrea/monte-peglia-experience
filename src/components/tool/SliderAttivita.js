@@ -11,6 +11,7 @@ function SliderAttivita({ indice, date, giorno, setAttivita, attivita }) {
     arrows: true,
     infinite: false,
     slidesToShow: 4,
+    slidesToScroll: 2,
     className: "container-box-attivita",
     responsive: [
       {
@@ -42,15 +43,13 @@ function SliderAttivita({ indice, date, giorno, setAttivita, attivita }) {
           <>
             <Slider {...settings}>
               {data.map((el, index) =>
-                el.ACF.tipologia_attivita === "singola_data" &&
-                el.ACF.singola_data === date ? (
+                el.ACF.generali.data === "singola_data" &&
+                el.ACF.dettagli.singola_data === date ? (
                   <BoxAttivita key={el.id} {...el} date={date} />
-                ) : el.ACF.tipologia_attivita === "ricorrente" &&
-                  el.ACF.data_ricorrente.includes(giorno) ? (
+                ) : el.ACF.generali.data === "ricorrente" &&
+                  el.ACF.dettagli.data_ricorrente.includes(giorno) ? (
                   <BoxAttivita key={el.id} {...el} date={date} />
-                ) : el.ACF.tipologia_attivita === "prenotazione" ? (
-                  <BoxAttivita key={el.id} {...el} date={date} />
-                ) : el.ACF.tipologia_attivita === "libera" ? (
+                ) : el.ACF.generali.data === "libera" ? (
                   <BoxAttivita key={el.id} {...el} date={date} />
                 ) : null
               )}

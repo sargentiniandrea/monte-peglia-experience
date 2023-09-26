@@ -25,9 +25,11 @@ const useFetch = (postType = "attivita", slug) => {
         if (postType === "attivita") {
           const set = new Set();
           response.data.map((el) => {
-            el.ACF.categoria_attivita.map((el2) => {
-              set.add(el2);
-            });
+            if (el.ACF.categorie_attivita) {
+              el.ACF.categorie_attivita.map((el2) => {
+                set.add(el2);
+              });
+            }
           });
           const nuoveCategorie = Array.from(set);
           nuoveCategorie.unshift("Tutto");
@@ -35,6 +37,7 @@ const useFetch = (postType = "attivita", slug) => {
           setFilterProducts(response.data);
         }
       } catch (error) {
+        console.log(error);
         setIsError(true);
       }
       setIsLoading(false);
