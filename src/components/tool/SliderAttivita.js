@@ -43,13 +43,13 @@ function SliderAttivita({ indice, date, giorno, setAttivita, attivita }) {
           <>
             <Slider {...settings}>
               {data.map((el, index) =>
-                el.ACF.generali.data === "singola_data" &&
-                el.ACF.dettagli.singola_data === date ? (
+                el.acf.generali.data === "singola_data" &&
+                el.acf.dettagli.singola_data === date ? (
                   <BoxAttivita key={el.id} {...el} date={date} />
-                ) : el.ACF.generali.data === "ricorrente" &&
-                  el.ACF.dettagli.data_ricorrente.includes(giorno) ? (
+                ) : el.acf.generali.data === "ricorrente" &&
+                  el.acf.dettagli.data_ricorrente.includes(giorno) ? (
                   <BoxAttivita key={el.id} {...el} date={date} />
-                ) : el.ACF.generali.data === "libera" ? (
+                ) : el.acf.generali.data === "libera" ? (
                   <BoxAttivita key={el.id} {...el} date={date} />
                 ) : null
               )}

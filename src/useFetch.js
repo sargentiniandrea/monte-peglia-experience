@@ -25,8 +25,8 @@ const useFetch = (postType = "attivita", slug) => {
         if (postType === "attivita") {
           const set = new Set();
           response.data.map((el) => {
-            if (el.ACF.categorie_attivita) {
-              el.ACF.categorie_attivita.map((el2) => {
+            if (el.acf.categorie_attivita) {
+              el.acf.categorie_attivita.map((el2) => {
                 set.add(el2);
               });
             }

@@ -18,8 +18,8 @@ const AttivitaScreen = () => {
     } else {
       setFilterProducts(
         data.filter((el) =>
-          el.ACF.categorie_attivita &&
-          el.ACF.categorie_attivita.includes(categoria)
+          el.acf.categorie_attivita &&
+          el.acf.categorie_attivita.includes(categoria)
             ? el
             : ""
         )
