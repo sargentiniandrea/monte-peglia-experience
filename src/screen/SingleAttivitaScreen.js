@@ -2,6 +2,7 @@ import { React, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import StickyBox from "react-sticky-box";
 import useFetch from "../useFetch";
+import Mappa from "../components/Mappa";
 import { formatArray } from "../utils/helpers";
 import { useGlobalContext } from "../context";
 import { ScrollToTop } from "../utils/helpers";
@@ -76,7 +77,9 @@ const SingleAttivitaScreen = () => {
       },
       scheda_tecnica,
       file_percorsi: { file_gpx, file_kml },
+      mappa,
     },
+    xml_mappa,
   } = Data[0];
 
   let classTipologia = tipologia ? tipologia : "";
@@ -111,10 +114,12 @@ const SingleAttivitaScreen = () => {
                 {formatArray(categorie_attivita, "compatta")}
               </span>
             </div>
-            <div
-              className='container-descr-attivita'
-              dangerouslySetInnerHTML={{ __html: descrizione_attivita }}
-            ></div>
+            <div className='container-descr-attivita'>
+              <p className='subtitolo-attivita'>Descrizione</p>
+              <div
+                dangerouslySetInnerHTML={{ __html: descrizione_attivita }}
+              ></div>
+            </div>
           </div>
           <StickyBox
             className='sidebar-attivita'
@@ -151,6 +156,9 @@ const SingleAttivitaScreen = () => {
               </div>
             ) : null}
           </StickyBox>
+        </div>
+        <div className='container container-mappa'>
+          <Mappa mappa={xml_mappa} />
         </div>
       </section>
     </>

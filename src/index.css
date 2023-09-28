@@ -1300,6 +1300,17 @@ footer hr {
   border-radius: 3px;
 }
 
+.container-mappa {
+  margin-top: 50px
+}
+
+.subtitolo-attivita {
+  font-size: 25px;
+  line-height: normal;
+}
+
+/* FINE SINGOLA ATTIVITA */
+
 .container-descr-attivita {
   margin-top: 20px
 }
