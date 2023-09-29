@@ -76,22 +76,18 @@ function BoxAttivita({ acf, slug, title, date }) {
       className={`box-attivita ${classTipologia} ${classSport} ${classPrenotazione} ${classData}`}
     >
       <div
-        className='img-attivita pointer'
+        className='img-attivita'
         style={{
           backgroundImage: `url(${acf.immagine_attivita.sizes.medium_large})`,
         }}
-        onClick={() => goToAttivita(slug)}
       >
         <span className='category-attivita'>
           {formatArray(acf.categorie_attivita, "compatta")}
         </span>
       </div>
       <div className='info-attivita'>
-        <div className='titolo-attivita pointer'>
-          <h3
-            onClick={() => goToAttivita(slug)}
-            dangerouslySetInnerHTML={{ __html: title.rendered }}
-          ></h3>
+        <div className='titolo-attivita'>
+          <h3 dangerouslySetInnerHTML={{ __html: title.rendered }}></h3>
         </div>
         <div className='date-attivita'>
           {acf.generali.data === "singola_data" ? (
@@ -114,7 +110,7 @@ function BoxAttivita({ acf, slug, title, date }) {
           <div className='durata-attivita'>
             <p>
               <FaHourglassHalf className='icon-durata' /> Durata:{" "}
-              {acf.dettagli.durata} ore ca.
+              {acf.dettagli.durata}
             </p>
           </div>
         ) : null}

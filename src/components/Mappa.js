@@ -29,7 +29,7 @@ function Mappa(mappa) {
           doubleClickZoom={true}
           wheelDebounceTime={10}
           wheelPxPerZoomLevel={10}
-          style={{ height: 400, borderRadius: 10 }}
+          style={{ height: 300, borderRadius: 10 }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

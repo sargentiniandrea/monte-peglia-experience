@@ -1,14 +1,14 @@
 import { React, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import StickyBox from "react-sticky-box";
+import SidebarAttivita from "../components/SidebarAttivita";
 import useFetch from "../useFetch";
 import Mappa from "../components/Mappa";
+import Galleria from "../components/Galleria";
+import DettagliAttivita from "../components/DettagliAttivita";
 import { formatArray } from "../utils/helpers";
 import { useGlobalContext } from "../context";
 import { ScrollToTop } from "../utils/helpers";
 import { RxArrowLeft } from "react-icons/rx";
-import gpx from "../assets/img/gpx.png";
-import kml from "../assets/img/kml.png";
 
 const SingleAttivitaScreen = () => {
   const { deleteScrollPosition } = useGlobalContext();
@@ -31,8 +31,8 @@ const SingleAttivitaScreen = () => {
             </div>
             <div className='page-title-loading'></div>
           </div>
-          <div className='container-img-singolo-loading'></div>
           <div className='container'>
+            <div className='container-img-singolo-loading'></div>
             <div className='container-descr-attivita-loading'></div>
           </div>
         </section>
@@ -65,19 +65,12 @@ const SingleAttivitaScreen = () => {
       categorie_attivita,
       descrizione_attivita,
       generali: { data, prenotazione, sport, tipologia },
-      dettagli: {
-        data_ricorrente,
-        durata,
-        durata_specifica,
-        email_organizzatore,
-        orario_fine,
-        orario_inizio,
-        orario_specifico,
-        singola_data,
-      },
+      photo_gallery: { galleria },
       scheda_tecnica,
       file_percorsi: { file_gpx, file_kml },
-      mappa,
+      box_contatti,
+      contatti,
+      email_organizzatore,
     },
     xml_mappa,
   } = Data[0];
@@ -94,6 +87,7 @@ const SingleAttivitaScreen = () => {
         className={`page-section single-attivita ${classTipologia} ${classSport} ${classPrenotazione} ${classData}`}
       >
         <div className='container'>
+          {/* Header attività */}
           <div className='return-arrow pointer' onClick={() => navigate(-1)}>
             <RxArrowLeft /> Torna indietro
           </div>
@@ -102,8 +96,11 @@ const SingleAttivitaScreen = () => {
             dangerouslySetInnerHTML={{ __html: titolo }}
           ></h1>
         </div>
+
+        {/* Inizio contenuto attività */}
         <div className='container container-attivita'>
           <div className='container-img-text'>
+            {/* Immagine attività */}
             <div
               className='container-img-singolo'
               style={{
@@ -114,52 +111,38 @@ const SingleAttivitaScreen = () => {
                 {formatArray(categorie_attivita, "compatta")}
               </span>
             </div>
-            <div className='container-descr-attivita'>
-              <p className='subtitolo-attivita'>Descrizione</p>
-              <div
-                dangerouslySetInnerHTML={{ __html: descrizione_attivita }}
-              ></div>
-            </div>
+
+            {/* Dettagli attività */}
+            <DettagliAttivita data={Data} />
+
+            {/* Descrizione attività */}
+            {descrizione_attivita && (
+              <div className='container-descr-attivita'>
+                <p className='subtitolo-attivita'>Descrizione</p>
+                <div
+                  dangerouslySetInnerHTML={{ __html: descrizione_attivita }}
+                ></div>
+              </div>
+            )}
           </div>
-          <StickyBox
-            className='sidebar-attivita'
-            offsetTop={80}
-            offsetBottom={30}
-          >
-            {tipologia === "sportiva" && scheda_tecnica ? (
-              <div className='box-sidebar container-scheda-tecnica'>
-                <h4>Scheda tecnica</h4>
-                <div dangerouslySetInnerHTML={{ __html: scheda_tecnica }}></div>
-              </div>
-            ) : null}
-            {tipologia === "sportiva" && (file_gpx || file_kml) ? (
-              <div className='box-sidebar container-download'>
-                <h4>Download</h4>
-                <p>Scarica il tracciato:</p>
-                <div>
-                  <a href={file_gpx} className='btn'>
-                    File gpx <img src={`${gpx}`} alt='gpx'></img>
-                  </a>
-                  <a href={file_kml} className='btn'>
-                    File kml <img src={`${kml}`} alt='kml'></img>
-                  </a>
-                </div>
-              </div>
-            ) : null}
-            {prenotazione === "si_prenotazione" ? (
-              <div className='box-sidebar container-prenotazione'>
-                <h4>Prenotazione</h4>
-                <div>
-                  <p>Prenota l'attività tramite il form</p>
-                  <button className='btn'>Prenota</button>
-                </div>
-              </div>
-            ) : null}
-          </StickyBox>
+          {(tipologia === "sportiva" &&
+            (scheda_tecnica || file_gpx || file_kml)) ||
+          (box_contatti && contatti) ||
+          email_organizzatore ? (
+            <SidebarAttivita data={Data} />
+          ) : null}
         </div>
-        <div className='container container-mappa'>
-          <Mappa mappa={xml_mappa} />
-        </div>
+        {xml_mappa && (
+          <div className='container container-mappa'>
+            <Mappa mappa={xml_mappa} />
+          </div>
+        )}
+        {galleria[0].length > 0 && (
+          <div className='container container-galleria'>
+            <p className='subtitolo-attivita'>Galleria</p>
+            <Galleria galleria={galleria[0]} />
+          </div>
+        )}
       </section>
     </>
   );

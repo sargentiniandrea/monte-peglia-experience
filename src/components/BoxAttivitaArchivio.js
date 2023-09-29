@@ -65,7 +65,7 @@ function BoxAttivitaArchivio({ acf, slug, title }) {
           <div className='durata-attivita'>
             <p>
               <FaHourglassHalf className='icon-durata' /> Durata:{" "}
-              {acf.dettagli.durata} ore ca.
+              {acf.dettagli.durata}
             </p>
           </div>
         ) : null}
