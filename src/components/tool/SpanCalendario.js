@@ -46,7 +46,7 @@ function SpanCalendario({
         className='content-blocco-attivita'
         onClick={() => goToAttivita(slug)}
       >
-        <p>{titolo}</p>
+        <p dangerouslySetInnerHTML={{ __html: titolo }}></p>
         <hr />
         <small>{periodo}</small>
       </div>

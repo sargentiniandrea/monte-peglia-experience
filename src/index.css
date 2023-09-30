@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,600;9..40,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Expletus+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap');
 
 :root {
   /* Colors */
@@ -60,6 +62,13 @@ p {
   margin: 10px 0px;
   font-size: 17px;
   line-height: 22px;
+}
+
+h1,
+h2 {
+  font-family: 'Proza Libre', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 
@@ -163,7 +172,7 @@ img {
 }
 
 .page-section {
-  padding-top: 70px;
+  padding-top: 75px;
   padding-bottom: 40px;
 }
 
@@ -388,18 +397,31 @@ img {
   justify-content: center;
   flex-direction: column;
   margin-right: 20px;
-  white-space: nowrap
+  white-space: nowrap;
+  font-family: "Expletus Sans", cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .nav-brand .logo {
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 17px;
 }
 
-.nav-brand .logo svg {
-  font-size: 20px;
+.nav-brand .logo-span {
+  font-size: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  display: block;
   position: relative;
-  top: 3px
+}
+
+.nav-brand .logo-span svg {
+  font-size: 18px;
+  position: absolute;
+  top: -2px;
+  left: 0px;
 }
 
 .nav-sidebar .container {
@@ -519,7 +541,7 @@ footer hr {
   right: 0px;
   top: 0px;
   bottom: 0px;
-  background-color: #00000061;
+  background-color: #00000075;
 }
 
 .hero-section .overlay-hero .container {
@@ -625,8 +647,19 @@ footer hr {
   display: none;
 }
 
+.incipit-tool {
+  font-size: 18px;
+  background-color: var(--verde800);
+  padding: 10px 20px;
+  border-radius: 10px;
+  line-height: 25px;
+  border: 1px solid white;
+  display: block;
+}
+
 .header-form {
-  margin-bottom: 30px
+  margin-bottom: 30px;
+  margin-top: 30px
 }
 
 .container-date-btns {
@@ -1045,7 +1078,7 @@ footer hr {
   background-position: center;
   padding: 10px;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: left;
   transition: all 0.3s ease-out;
 }
@@ -1194,7 +1227,7 @@ footer hr {
   padding: 10px;
   display: flex;
   justify-content: left;
-  align-items: start;
+  align-items: flex-start;
   border-radius: 10px;
 }
 
@@ -1389,8 +1422,16 @@ footer hr {
 }
 
 .container-mappa,
+.container-google-maps,
 .container-galleria {
   margin-top: 40px
+}
+
+.container-google-maps iframe {
+  width: 100%;
+  border-radius: 10px;
+  height: 450px;
+  background-color: #dcdfe1;
 }
 
 .ReactGridGallery_tile {
@@ -1660,7 +1701,7 @@ footer hr {
   }
 
   .page-section {
-    padding-top: 120px;
+    padding-top: 125px;
   }
 
   .hero-section {

@@ -1,5 +1,5 @@
 import { React } from "react";
-import backImage from "../assets/img/riserva.jpg";
+import backImage from "../assets/img/home-2.jpg";
 import { BsArrowUpRight } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +13,7 @@ function HeroSection() {
       className='hero-section'
       style={{
         background: `url(${backImage})`,
-        backgroundPosition: "center",
+        backgroundPosition: "center right",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
@@ -21,7 +21,7 @@ function HeroSection() {
       <div className='overlay-hero'>
         <div className='container'>
           <div>
-            <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
+            <h1>Riscopri la connessione con la natura incontaminata.</h1>
             <button className='btn btn-hero' onClick={goToTool}>
               Costruisci la tua esperienza
               <BsArrowUpRight className='btn-icon' />

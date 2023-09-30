@@ -51,6 +51,10 @@ const ToolScreen = () => {
       <section className='page-section tool-page'>
         <div className='container'>
           <h1 className='page-title'>Costruisci la tua esperienza</h1>
+          <p className='incipit-tool'>
+            Scegli le date, esplora le attività che puoi fare per ognuno dei
+            giorni selezionati e pianifica il tuo calendario di attività!
+          </p>
           <div className='header-form'>
             <DatepickerForm />
           </div>

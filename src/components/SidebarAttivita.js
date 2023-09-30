@@ -24,7 +24,7 @@ const SidebarAttivita = ({ data: Data }) => {
   } = Data[0];
 
   return (
-    <StickyBox className='sidebar-attivita' offsetTop={80} offsetBottom={30}>
+    <StickyBox className='sidebar-attivita' offsetTop={90} offsetBottom={30}>
       {tipologia === "sportiva" && scheda_tecnica ? (
         <div className='box-sidebar container-scheda-tecnica'>
           <h4>Scheda tecnica</h4>

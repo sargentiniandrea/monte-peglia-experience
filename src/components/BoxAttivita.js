@@ -76,10 +76,11 @@ function BoxAttivita({ acf, slug, title, date }) {
       className={`box-attivita ${classTipologia} ${classSport} ${classPrenotazione} ${classData}`}
     >
       <div
-        className='img-attivita'
+        className='img-attivita pointer'
         style={{
           backgroundImage: `url(${acf.immagine_attivita.sizes.medium_large})`,
         }}
+        onClick={() => goToAttivita(slug)}
       >
         <span className='category-attivita'>
           {formatArray(acf.categorie_attivita, "compatta")}
@@ -87,7 +88,11 @@ function BoxAttivita({ acf, slug, title, date }) {
       </div>
       <div className='info-attivita'>
         <div className='titolo-attivita'>
-          <h3 dangerouslySetInnerHTML={{ __html: title.rendered }}></h3>
+          <h3
+            className='pointer'
+            dangerouslySetInnerHTML={{ __html: title.rendered }}
+            onClick={() => goToAttivita(slug)}
+          ></h3>
         </div>
         <div className='date-attivita'>
           {acf.generali.data === "singola_data" ? (

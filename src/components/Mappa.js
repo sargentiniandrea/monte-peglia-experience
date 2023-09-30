@@ -1,6 +1,3 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import file_gpx from "../assets/gpx/Track_Melonta.gpx";
 import { MapContainer, TileLayer, Polyline } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
