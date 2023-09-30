@@ -3,13 +3,11 @@ import { RiMenu3Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context";
 import { LinkComponent } from "../utils/links";
-import { LiaMountainSolid } from "react-icons/lia";
 
 const Navbar = () => {
-  const { openSidebar, changeNavbarColor, colorChange } = useGlobalContext();
-  window.addEventListener("scroll", changeNavbarColor);
+  const { openSidebar } = useGlobalContext();
   return (
-    <nav className={colorChange ? "main-nav main-nav-color" : "main-nav"}>
+    <nav className='main-nav main-nav-color'>
       <div className='container'>
         <header className='nav-header'>
           <Link to='/' className='nav-brand'>

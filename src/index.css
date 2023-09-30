@@ -172,7 +172,7 @@ img {
 }
 
 .page-section {
-  padding-top: 75px;
+  padding-top: 95px;
   padding-bottom: 40px;
 }
 
@@ -919,6 +919,7 @@ footer hr {
   padding-bottom: 40px;
   padding-top: 16px;
   background-color: var(--verde700);
+  min-height: 100vh;
 }
 
 .overlay-calendario.show-calendar {
@@ -1229,6 +1230,7 @@ footer hr {
   justify-content: left;
   align-items: flex-start;
   border-radius: 10px;
+  background-color: var(--verde900);
 }
 
 .container-dettagli-attivita {

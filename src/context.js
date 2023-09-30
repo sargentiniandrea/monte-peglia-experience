@@ -5,7 +5,6 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [colorChange, setColorchange] = useState(false);
   const [localPage, setLocalPage] = useState(
     localStorage.getItem("pagine-wp")
       ? JSON.parse(localStorage.getItem("pagine-wp"))
@@ -29,14 +28,6 @@ const AppProvider = ({ children }) => {
     setScrollPosition(0);
   };
 
-  const changeNavbarColor = () => {
-    if (window.scrollY >= 15) {
-      setColorchange(true);
-    } else {
-      setColorchange(false);
-    }
-  };
-
   return (
     <AppContext.Provider
       value={{
@@ -46,8 +37,6 @@ const AppProvider = ({ children }) => {
         scrollPosition,
         getScrollPosition,
         deleteScrollPosition,
-        changeNavbarColor,
-        colorChange,
         localPage,
         setLocalPage,
         filterProducts,
