@@ -1,5 +1,5 @@
 import { React } from "react";
-import backImage from "../assets/img/home-2.jpg";
+import backImage from "../assets/img/home.jpg";
 import { BsArrowUpRight } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
