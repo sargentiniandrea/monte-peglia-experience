@@ -21,7 +21,7 @@ function HeroSection() {
       <div className='overlay-hero'>
         <div className='container'>
           <div>
-            <h1>Riscopri la connessione con la natura incontaminata.</h1>
+            <h1>Riscopri il contatto con la natura incontaminata.</h1>
             <button className='btn btn-hero' onClick={goToTool}>
               Costruisci la tua esperienza
               <BsArrowUpRight className='btn-icon' />
