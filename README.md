@@ -1,7 +1,6 @@
 ## Monte Peglia Experience (Bozza)
 
-Link -> https://monte-peglia-experience.netlify.app
-<a href="https://monte-peglia-experience.netlify.app" target="_blank">https://monte-peglia-experience.netlify.app</a>
+Link-> <a href="https://monte-peglia-experience.netlify.app" target="_blank">https://monte-peglia-experience.netlify.app</a>
 
 Bozza del sito web, che sarà presto online, dedicato alla promozione della Riserva della Biosfera Unesco del Monte Peglia e dell'ostello che fungerà da centro per tutte le attività disponibili.
 
